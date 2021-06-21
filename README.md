@@ -54,6 +54,18 @@ Eclipse , כי זה העורך שהשתמשנו בו לכתיבת התוכנית
 
 ![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_program_body.png)
 
+## הפונקציה שיוצרת את קובץ הקונפיגרציה
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_create_config_file.png)
+
+## קובץ הקונפיגרציה
+
+בסעיף ד) במטלה של הפרויקט דרוש שהנתון שלפיו גודל הסיסמה יהיה באורך לפחות 10 תווים אמור להיות מאוחסן בקובץ קונפגרציה , אז כתבנו פונקציה שיוצרת קובץ כזה ומאחסנת בתוכו את הנתון הדרוש.
+דוגמה של קובץ כזה מאוחסנת בתיקיה הראשית של הריפוסיטורי.
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/config_file.png)
+
+
 ## פלט התוכנית - התפריט הראשי:
 
 ![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_menu.png)

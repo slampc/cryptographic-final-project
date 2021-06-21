@@ -1,3 +1,16 @@
+/* ***************************************************
+ * Final project in cryptographic course             *
+ * a program to register new users to MySql Database *
+ * The program will encrypt the passwords            *
+ * by using Sha256 with salted hash function         *
+ * --------------------------------------------------*
+ * The Program was coded by:                         *
+ * Nasir Alden : ID-035689678                        *
+ * Ron Hovara : ID-208902510						 *
+ * Maaor Sivoni: ID-204583371						 *
+ * ***************************************************/
+ 
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
@@ -12,23 +25,24 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Main {
 	
-	static final String DB_URL = "jdbc:mysql://localhost:3306/usersDB";
-	static final String USER = "root";
-	static final String PASS = "";
+	static final String DB_URL = "jdbc:mysql://localhost:3306/usersDB";  // connect to our MySql Database.
+	static final String USER = "root";  //User name to login to the database 
+	static final String PASS = "";  // Password of connection to database
+
 
 	// *************** Main Function ***************************
 	
   public static void main(String[] args) throws InvalidKeyException, NoSuchAlgorithmException, IOException {        
-	  System.out.println("Loading JDBC driver...");
+	  System.out.println("Loading JDBC driver...");  // Load the JDBC driver that make java connect to Mysql
 	  try {
 	      Class.forName("com.mysql.cj.jdbc.Driver");
-	      System.out.println("JDBC Driver loaded!");
+	      System.out.println("JDBC Driver loaded!");  // JDBC Successfully loaded
 	  } catch (ClassNotFoundException e) {
-	      throw new IllegalStateException("Cannot find the driver in the classpath!", e);
+	      throw new IllegalStateException("Cannot find the driver in the classpath!", e); // JDBC Failed to load
 	  }
 	  
 	  Scanner input = new Scanner(System.in);  // Create a Scanner object
-		while(true){
+		while(true){    // The main menu loop
 			createConfigFile();
 			System.out.println("\n\nChoose option please:\n1) Add new table to database.");
 			System.out.println("2) Add new user to database.");
@@ -36,20 +50,20 @@ public class Main {
             String op = input.nextLine();  // Read user input
 
 			switch(op.charAt(0)) {
-			case '1':{
+			case '1':{        //Add new table to the database
 				addTable();
 			}
 			break;	
-			case '2':{
+			case '2':{	   // Add a new user to 'users' table
 				addUser();
 			}
 			break;
-			case '3': {
+			case '3': {    // Exit option
 				System.out.println("Mission Completed , Good Bye!\n");
 				return;
 			}
 			
-			default:
+			default:    // Invalid option choose
 				System.out.println("Option not found ,Please try again ...\n");
 			}
 		}					
@@ -57,31 +71,32 @@ public class Main {
   }  
 
  
-//**************** Create Table ******************
+//**************** Create New Table in database ******************
  public static void addTable() {
 
 	  System.out.println("Insert name of table to add to database : ");
 	  Scanner input = new Scanner(System.in);  // Create a Scanner object
       String table = input.nextLine();  // Read user input
            
-	  try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+	  try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);  // connect to database
 		  Statement stmt = conn.createStatement();) 
 	  			{		      
-		          String sql = "CREATE TABLE "+ table +
+		          String sql = "CREATE TABLE "+ table +               // Build the Query to send
 		                   "(id INTEGER not NULL AUTO_INCREMENT, " +
 		                   " username VARCHAR(255), " + 
 		                   " password VARCHAR(255), " + 
+		                   " salt VARCHAR(255), " + 
 		                   " PRIMARY KEY ( id ))"; 
 
 		         stmt.executeUpdate(sql);
-		         System.out.println("\""+ table + "\" table created in given database...");  
-		         conn.close();
+		         System.out.println("\""+ table + "\" table created in given database...");  //Table Successfully created
+		         conn.close();   //Close the connection
 		      } catch (Exception e) {
-		    	  System.out.println("Table \""+ table + "\" is exist , No table was added.");
+		    	  System.out.println("Table \""+ table + "\" is exist , No table was added."); // Table creation failed
 		      }
   			}
 		      	 
-// **************** Add User ******************
+// **************** Add User to 'users' table ******************
   public static void addUser() throws InvalidKeyException, NoSuchAlgorithmException {
 	  Scanner input = new Scanner(System.in);  // Create a Scanner object
 	  System.out.println("Insert username : ");
@@ -98,20 +113,22 @@ public class Main {
 	  System.out.println("Hashed password: " + hashedPass);
       
 	  
-	  try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+	  try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);  // connect to database
 		  Statement stmt = conn.createStatement();) 
 	  			{		      
-	         	String sql = "INSERT INTO users (username,password) VALUES ('" +
+	         	String sql = "INSERT INTO users (username,password,salt) VALUES ('" +   // Build a Query to send
 	         				 userToAdd + "', '" +
-	         				 hashedPass + "')";
+	         				 hashedPass + "', '" +
+	         				 salt + "')";
 	         	stmt.executeUpdate(sql);
-		        conn.close();
+		        conn.close();			//Close the connection
 		      } catch (Exception e) {
 
 		      }
   			}
  
-// ************** Generate Salt *****************
+// ************** Generate Random Salt to hash the passwords with it *****************
+  
   public static byte[] generateSalt() {
       SecureRandom random = new SecureRandom();
       byte bytes[] = new byte[20];
