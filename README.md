@@ -1,5 +1,5 @@
 
-<p dir="rtl">
+<div style="direction: rtl; text-align: right">
 
 ## פרויקט סוף סמסטר - שיטות זיהוי תקיפות סייבר
 
@@ -23,7 +23,15 @@ Salted hash כפי שנלמד בשיעור.
 
 </p>
 
+
 # ביצוע הפרויקט
 
-## הכנת בסיס הנתונים
+## - הכנת בסיס הנתונים :
 
+הורד את קובץ התמונה המשוכפל של בסיס הנתונים שמצורף לתיקיה הראשית של הריפוסיטורי , הקובץ נקרא : usersdb.sql
+טען (import) את הקובץ ב-Phpmyadmin .
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/import_database.png)
+
+
+</div>
