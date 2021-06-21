@@ -28,10 +28,60 @@ Salted hash כפי שנלמד בשיעור.
 
 ## - הכנת בסיס הנתונים :
 
+<p dir="rtl">
+
 הורד את קובץ התמונה המשוכפל של בסיס הנתונים שמצורף לתיקיה הראשית של הריפוסיטורי , הקובץ נקרא : usersdb.sql
 טען (import) את הקובץ ב-Phpmyadmin .
+</p>
 
 ![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/import_database.png)
+
+ואז נקבל את בסיס הנתונים שלנו  בצורה הבאה:
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/database.png)
+
+כעת נוריד את קובת התוכנה שנקרא:
+main.java
+מהתיקיה הראשית של הריפוסיטורי.
+נפעיל את התוכנה בכל IDE , מומלץ 
+Eclipse , כי זה העורך שהשתמשנו בו לכתיבת התוכנית.
+
+עץ הפרויקטים :
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_project_tree.png)
+
+גוף התוכנית - שורות הקוד:
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_program_body.png)
+
+פלט התוכנית - התפריט הראשי:
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_menu.png)
+
+## - אופציה 1 בתפריט - יצירת טבלה חדשה בבסיס הנתונים :
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_create_table.png)
+
+## - אופציה 2 בתפריט - הוספת משתמש חדש לבסיס הנתונים  :
+
+נסיונות לא מוצלחים בבחירת סיסמה לא חוקית
+
+סיסמה קצרה
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_invalid_password.png)
+
+סיסמה חסרת תווים מכל הסוגים:
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_invalid_password2.png)
+
+
+סיסמה מוצלחת:
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/eclipse_valid_password.png)
+
+בסיס נתונים וטבלה מעודכנים בנתונים החדשים שהכנסנו בתוכנית:
+
+![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/user_added.png)
+
 
 
 </div>
