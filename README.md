@@ -30,8 +30,12 @@ Salted hash כפי שנלמד בשיעור.
 
 <p dir="rtl">
 
-הורד את קובץ התמונה המשוכפל של בסיס הנתונים שמצורף לתיקיה הראשית של הריפוסיטורי , הקובץ נקרא : usersdb.sql
-טען (import) את הקובץ ב-Phpmyadmin .
+הורד את קובץ התמונה המשוכפל של בסיס הנתונים שמצורף לתיקיה הראשית של הריפוסיטורי , הקובץ נקרא :
+ usersdb.sql
+
+טען (import) את הקובץ 
+ב-Phpmyadmin .
+
 </p>
 
 ![import database](https://github.com/slampc/cryptographic-final-project/blob/main/images/import_database.png)
